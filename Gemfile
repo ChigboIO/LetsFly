@@ -16,10 +16,16 @@ gem "jquery-rails"
 # Turbolinks makes following links in your web application faster. Read more:
 # https://github.com/rails/turbolinks
 gem "turbolinks"
+gem "jquery-turbolinks"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.0"
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "sdoc", "~> 0.4.0", group: :doc
+
+# Use materialize css
+gem "materialize-sass"
+# Use font awesome
+gem "font-awesome-sass"
 
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
@@ -36,6 +42,8 @@ group :development, :test do
   gem "byebug"
   # Use sqlite3 as the database for Active Record
   gem "sqlite3"
+  gem "rspec-rails", "~> 3.0"
+  gem "capybara"
 end
 
 group :development do
@@ -43,6 +51,9 @@ group :development do
   gem "web-console", "~> 2.0"
   gem "rubocop", require: false
   gem "scss_lint", require: false
+  gem "guard", require: false
+  gem "guard-livereload", "~> 2.5", require: false
+  gem "guard-rspec", require: false
 end
 
 group :production do
