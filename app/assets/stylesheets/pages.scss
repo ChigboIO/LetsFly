@@ -25,8 +25,34 @@ body {
 .search-form-section {
   background-color: transparentize($my-black, 0.3);
   border-radius: 0.5em;
-  height: 10em;
+  // height: 10em;
   margin: 1.5em 0;
+  padding: 1em 1.5em;
+
+  button {
+    // background-color: transparent;
+  }
+}
+
+.home-input {
+  background-color: $my-white !important;
+  border-radius: 0.4em !important;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+
+  .caret {
+    display: none;
+  }
+
+  .select-dropdown {
+    border-bottom: none !important;
+  }
+}
+
+.up-left-rotate {
+  // -ms-transform: rotate(315deg);
+  // -webkit-transform: rotate(315deg);
+  // transform: rotate(315deg);
 }
 
 .flight-board {
