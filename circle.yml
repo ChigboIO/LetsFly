@@ -1,0 +1,7 @@
+machine:
+  ruby:
+    version: 2.1.6
+
+dependencies:
+  pre:
+    - gem install bundler --pre
