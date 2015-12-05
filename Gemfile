@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# ruby "2.1.6"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.4"
 # Use SCSS for stylesheets
@@ -44,6 +46,7 @@ group :development, :test do
   gem "sqlite3"
   gem "rspec-rails", "~> 3.0"
   gem "capybara"
+  gem "factory_girl"
 end
 
 group :development do
