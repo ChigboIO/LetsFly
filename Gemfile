@@ -46,7 +46,7 @@ group :development, :test do
   gem "sqlite3"
   gem "rspec-rails", "~> 3.0"
   gem "capybara"
-  gem "factory_girl"
+  gem "factory_girl_rails"
 end
 
 group :development do
@@ -57,6 +57,7 @@ group :development do
   gem "guard", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", require: false
+  gem "faker"
 end
 
 group :production do

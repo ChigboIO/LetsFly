@@ -2,8 +2,8 @@ class CreateFlights < ActiveRecord::Migration
   def change
     create_table :flights do |t|
       t.string :airline
-      t.integer :airport_id
-      t.integer :airport_id
+      t.integer :origin_airport_id
+      t.integer :destination_airport_id
       t.timestamp :departure
       t.integer :duration
       t.decimal :price
@@ -14,3 +14,4 @@ class CreateFlights < ActiveRecord::Migration
     end
   end
 end
+
