@@ -15,6 +15,6 @@ class FlightsController < ApplicationController
   private
 
   def flight_params
-    params.require(:flight).permit()
+    params.require(:flight).permit
   end
 end

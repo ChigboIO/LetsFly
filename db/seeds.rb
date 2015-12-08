@@ -17,7 +17,11 @@ CSV.foreach("airports.csv", headers: true) do |row|
   Airport.create! row.to_hash
 end
 
-airlines = ["Arik Air", "Dana Air", "Aero Contractors", "Air Peace", "Allied Air", "Associated Aviation", "Azman Air", "Dornier Aviation Nigeria", "Kabo Air", "Max Air", "Med-View Airline", "Overland Airways", "TAT Nigeria"]
+airlines = [
+  "Arik Air", "Dana Air", "Aero Contractors", "Air Peace",
+  "Allied Air", "Associated Aviation", "Azman Air", "Dornier Aviation Nigeria",
+  "Kabo Air", "Max Air", "Med-View Airline", "Overland Airways", "TAT Nigeria"
+]
 
 3.times do
   flight_time = Random.rand(0..30)
@@ -25,7 +29,10 @@ airlines = ["Arik Air", "Dana Air", "Aero Contractors", "Air Peace", "Allied Air
   flight = Flight.new
   flight.airline = airlines.sample
   flight.origin_airport_id = Airport.all.sample.id
-  flight.destination_airport_id = Airport.where.not(id: flight.origin_airport_id).sample.id
+
+  flight.destination_airport_id =
+    Airport.where.not(id: flight.origin_airport_id).sample.id
+
   flight.departure_datetime = date_time
   flight.arrival_datetime = date_time + flight_time.hour
   flight.price = Faker::Commerce.price

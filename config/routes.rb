@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'flights/index'
+  get "flights/index"
 
-  get 'flights/search'
+  get "flights/search"
 
   root to: "pages#index"
 
