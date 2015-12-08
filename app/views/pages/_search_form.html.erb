@@ -1,39 +1,36 @@
 <div class="row">
-  <form>
+  <%= form_for @flight, url: search_flights_path, remote: true, method: :get do |f|%>
     <div class="col l4">
       <!-- <div class="home-input-label">From</div> -->
-      <select name="from" class="home-input">
-        <option>From</option>
-        <option value="lagos">Lagos, Murtala Muhammed International Airport, LOS</option>
-        <option value="lagos">Enugu, Murtala Muhammed International Airport, LOS</option>
-        <option value="lagos">Abuja, Murtala Muhammed International Airport, LOS</option>
-      </select>
+      <%= select_tag :origin_airport_id, options_for_select([
+        ["from", nil],
+        ["Lagos, Murtala Muhammed International Airport, LOS", 1],
+        ["Enugu, Murtala Muhammed International Airport, LOS", 2],
+        ["Abuja, Murtala Muhammed International Airport, LOS", 3]
+      ]), class: "home-input" %>
     </div>
     <div class="col l4">
       <!-- <div>To</div> -->
-      <select name="to" class="home-input">
-        <option class="home-input-label">To</option>
-        <option value="lagos">Enugu, Murtala Muhammed International Airport, LOS</option>
-        <option value="lagos">Abuja, Murtala Muhammed International Airport, LOS</option>
-        <option value="lagos">Lagos, Murtala Muhammed International Airport, LOS</option>
-      </select>
+      <%= select_tag :destination_airport_id, options_for_select([
+        ["destination", nil],
+        ["Lagos, Murtala Muhammed International Airport, LOS", 1],
+        ["Enugu, Murtala Muhammed International Airport, LOS", 2],
+        ["Abuja, Murtala Muhammed International Airport, LOS", 3]
+      ]), class: "home-input" %>
     </div>
     <div class="col l2">
       <!-- <div class="home-input-label">Travel Date</div> -->
-      <input type="date" name="date" placeholder="Travel Date" class="datepicker home-input">
+      <%= date_field :travel_date, "", class: "datepicker home-input", placeholder: "Travel Date" %>
     </div>
     <div class="col l1">
       <!-- <div class="home-input-label">Travelers</div> -->
-      <select name="number_of_passengers" class="home-input">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+      <%= f.number_field :available_seats, placeholder: "Number of Travelers", class: "home-input" %>
     </div>
     <div class="col l1">
-      <button type="submit" class="btn"><i class="material-icons up-left-rotate">send</i></button>
+      <%= f.button class: "btn"  do %>
+        <i class="material-icons up-left-rotate">send</i>
+      <% end %>
+      
     </div>
-  </form>
+  <% end %>
 </div>

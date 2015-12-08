@@ -5,9 +5,10 @@ RSpec.describe Flight, type: :model do
   subject { flight }
 
   it { should respond_to(:airline) }
-  it { should respond_to(:airport_id) }
-  it { should respond_to(:departure) }
-  it { should respond_to(:duration) }
+  it { should respond_to(:origin_airport_id) }
+  it { should respond_to(:destination_airport_id) }
+  it { should respond_to(:departure_datetime) }
+  it { should respond_to(:arrival_datetime) }
   it { should respond_to(:capacity) }
   it { should respond_to(:available_seats) }
 end
