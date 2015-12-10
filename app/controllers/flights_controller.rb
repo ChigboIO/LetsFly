@@ -4,6 +4,7 @@ class FlightsController < ApplicationController
 
   def search
     @flights = Flight.get_match(flight_params)
+    @seats = flight_params[:available_seats]
     respond_to do |format|
       format.html
       format.json

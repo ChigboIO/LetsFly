@@ -24,7 +24,7 @@ airlines = [
 ]
 
 500.times do
-  flight_time = Random.rand(0..30)
+  flight_time = Random.rand(45..180)
   date_time = Faker::Time.forward(21, :morning)
   flight = Flight.new
   flight.airline = airlines.sample
@@ -34,7 +34,7 @@ airlines = [
     Airport.where.not(id: flight.origin_airport_id).sample.id
 
   flight.departure_datetime = date_time
-  flight.arrival_datetime = date_time + flight_time.hour
+  flight.arrival_datetime = (date_time + flight_time.minute)
   flight.price = Faker::Commerce.price
   flight.capacity = Random.rand(100..200)
   flight.available_seats = flight.capacity - Random.rand(0..100)

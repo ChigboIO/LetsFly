@@ -5,9 +5,21 @@ Rails.application.routes.draw do
 
   root to: "pages#index"
 
+  # shallow do
   resources :flights do
-    collection { get :search }
+    collection do
+      get :search
+    end
+
+    resources :bookings do
+      collection do
+        get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
+      end
+    end
   end
+  # end
+
+  # get 'flights/:id/book/:seats' => 'bookings#book', as: :book_flight
 
   # The priority is based upon order of creation: first
   # created -> highest priority.
