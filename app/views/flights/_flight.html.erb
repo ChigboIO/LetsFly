@@ -1,0 +1,27 @@
+<% unless @flights.blank? %>
+  <table class="bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Airline</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @flights.each do |flight| %>
+        <tr>
+          <td>Img</td>
+          <td><%= flight.airline %></td>
+          <td><%= flight.origin_airport.name %>, <%= flight.origin_airport.state %></td>
+          <td><%= flight.destination_airport.name %>, <%= flight.destination_airport.state %></td>
+          <td><%= flight.departure_datetime %></td>
+          <td><%= flight.arrival_datetime %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <span>No flight found for your search. You could search for a different day</span>
+<% end %>

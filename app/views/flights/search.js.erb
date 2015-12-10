@@ -1,1 +1,3 @@
-alert("Invoked <%= @result.inspect %>")
+container = $("#flight-time-board");
+// alert("<%= @f_date %>");
+container.empty().append("<%= j render('flight') %>");

@@ -23,9 +23,9 @@ airlines = [
   "Kabo Air", "Max Air", "Med-View Airline", "Overland Airways", "TAT Nigeria"
 ]
 
-3.times do
+500.times do
   flight_time = Random.rand(0..30)
-  date_time = Faker::Time.forward(12, :morning)
+  date_time = Faker::Time.forward(21, :morning)
   flight = Flight.new
   flight.airline = airlines.sample
   flight.origin_airport_id = Airport.all.sample.id
@@ -37,6 +37,6 @@ airlines = [
   flight.arrival_datetime = date_time + flight_time.hour
   flight.price = Faker::Commerce.price
   flight.capacity = Random.rand(100..200)
-  flight.available_seats = 200 - flight.capacity - Random.rand(0..100)
+  flight.available_seats = flight.capacity - Random.rand(0..100)
   flight.save!
 end
