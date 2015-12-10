@@ -3,8 +3,7 @@ class FlightsController < ApplicationController
   end
 
   def search
-    # @result = Flight.where(flight_params)
-    @result = Flight.all.sample
+    @flights = Flight.get_match(flight_params)
     respond_to do |format|
       format.html
       format.json
@@ -12,9 +11,12 @@ class FlightsController < ApplicationController
     end
   end
 
-  private
-
   def flight_params
-    params.require(:flight).permit
+    params.require(:flight).permit(
+      :origin_airport_id,
+      :destination_airport_id,
+      :departure_datetime,
+      :available_seats
+    )
   end
 end

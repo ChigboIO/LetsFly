@@ -2,29 +2,19 @@
   <%= form_for @flight, url: search_flights_path, remote: true, method: :get do |f|%>
     <div class="col l4">
       <!-- <div class="home-input-label">From</div> -->
-      <%= select_tag :origin_airport_id, options_for_select([
-        ["from", nil],
-        ["Lagos, Murtala Muhammed International Airport, LOS", 1],
-        ["Enugu, Murtala Muhammed International Airport, LOS", 2],
-        ["Abuja, Murtala Muhammed International Airport, LOS", 3]
-      ]), class: "home-input" %>
+      <%= f.select :origin_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Origin Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
     </div>
     <div class="col l4">
       <!-- <div>To</div> -->
-      <%= select_tag :destination_airport_id, options_for_select([
-        ["destination", nil],
-        ["Lagos, Murtala Muhammed International Airport, LOS", 1],
-        ["Enugu, Murtala Muhammed International Airport, LOS", 2],
-        ["Abuja, Murtala Muhammed International Airport, LOS", 3]
-      ]), class: "home-input" %>
+      <%= f.select :destination_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Desctination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
     </div>
     <div class="col l2">
       <!-- <div class="home-input-label">Travel Date</div> -->
-      <%= date_field :travel_date, "", class: "datepicker home-input", placeholder: "Travel Date" %>
+      <%= f.date_field :departure_datetime, { class: "datepicker home-input", placeholder: "Travel Date" } %>
     </div>
     <div class="col l1">
       <!-- <div class="home-input-label">Travelers</div> -->
-      <%= f.number_field :available_seats, placeholder: "Number of Travelers", class: "home-input" %>
+      <%= f.number_field :available_seats, { value: 1, placeholder: "Number of Travelers", class: "home-input", required: "required", "min" => 1 } %>
     </div>
     <div class="col l1">
       <%= f.button class: "btn"  do %>

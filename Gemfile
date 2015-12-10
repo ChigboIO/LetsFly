@@ -29,6 +29,8 @@ gem "materialize-sass"
 # Use font awesome
 gem "font-awesome-sass"
 
+gem "faker"
+
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 
@@ -57,7 +59,6 @@ group :development do
   gem "guard", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", require: false
-  gem "faker"
 end
 
 group :production do
