@@ -2,7 +2,7 @@ class RemoveDurationAddArivalToFlight < ActiveRecord::Migration
   def up
     remove_column :flights, :duration
     rename_column :flights, :departure, :departure_datetime
-    add_column :flights, :flight_no, :string, after: :airline
+    # add_column :flights, :flight_no, :string, after: :airline
     add_column(
       :flights,
       :arrival_datetime,
