@@ -6,7 +6,7 @@ class Flight < ActiveRecord::Base
 
   def self.get_match(params)
     match = Flight.all
-    match = where(
+    match = match.where(
       "origin_airport_id = ?",
       params[:origin_airport_id]
     ) unless params[:origin_airport_id] == ""
@@ -20,6 +20,12 @@ class Flight < ActiveRecord::Base
       "available_seats >= ?",
       params[:available_seats].to_i
     ) unless params[:available_seats] == ""
+
+    match = match.where(
+      "departure_datetime LIKE ?",
+      "%" + Date.parse(params[:departure_datetime]).strftime("%Y-%m-%d") + "%"
+    ) unless params[:departure_datetime] == ""
+
     match
   end
 end

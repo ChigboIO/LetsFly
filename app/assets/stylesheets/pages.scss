@@ -2,9 +2,14 @@ $my-black: #000;
 $my-white: #fff;
 
 body {
-  background: image-url("united-airline-bg.jpg") no-repeat fixed;
   background-size: cover;
   font-size: 0.9em;
+}
+
+.home-body {
+  background: image-url("united-airline-bg.jpg") no-repeat fixed;
+  margin: -4em 0;
+  padding: 4em 0;
 }
 
 .container {
