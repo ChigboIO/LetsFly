@@ -19,7 +19,7 @@
           <td><%= flight.destination_airport.name %>, <%= flight.destination_airport.state %></td>
           <td><%= flight.departure_datetime %></td>
           <td><%= flight.arrival_datetime %></td>
-          <td><%= link_to "Book", flight_booking_path(flight.id, @seats), class: "btn" %></td>
+          <td><%= link_to "Book", book_flights_path(flight.id, @seats), class: "btn" %></td>
         </tr>
       <% end %>
     </tbody>

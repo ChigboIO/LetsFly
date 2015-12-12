@@ -1,7 +1,4 @@
 class FlightsController < ApplicationController
-  def index
-  end
-
   def search
     @flights = Flight.get_match(flight_params)
     @seats = flight_params[:available_seats]
