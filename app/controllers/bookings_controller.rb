@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  def show
+  def book
     @flight = Flight.find(params[:flight_id])
     @booking = Booking.new(flight_id: params[:flight_id])
     params[:seats].to_i.times { @booking.passengers.build }
@@ -16,6 +16,13 @@ class BookingsController < ApplicationController
 
   def checkout
     @booking = Booking.find(params[:booking_id])
+  end
+
+  def payment
+    # perform payment operations here and redirect to confirmation page
+    # Send mail to the passenger.
+    booking_id = params[:booking_id]
+    redirect_to confirmation_bookings_path(booking_id)
   end
 
   def confirmation
