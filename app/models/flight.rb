@@ -22,8 +22,8 @@ class Flight < ActiveRecord::Base
     ) unless params[:available_seats] == ""
 
     match = match.where(
-      "departure_datetime LIKE ?",
-      "%" + Date.parse(params[:departure_datetime]).strftime("%Y-%m-%d") + "%"
+      "Date(departure_datetime) = ?",
+      Date.parse(params[:departure_datetime]).strftime("%Y-%m-%d")
     ) unless params[:departure_datetime] == ""
 
     match
