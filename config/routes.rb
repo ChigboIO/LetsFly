@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   resources :flights, only: [:index] do
     collection do
       get :search
-      get "/:flight_id/booking/seats/:seats" => "bookings#show", as: :book
+      get "/:flight_id/booking/seats/:seats" => "bookings#book", as: :book
     end
   end
 
   resources :bookings, only: [:create] do
     collection do
       get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
+      get "/:booking_id/payment" => "bookings#payment", as: :payment
       get "/:booking_id/confirmation" => "bookings#confirmation",
           as: :confirmation
     end
