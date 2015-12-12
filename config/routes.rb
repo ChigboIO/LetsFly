@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
-  get "flights/index"
+  # get "flights/index"
 
-  get "flights/search"
+  # get "flights/search"
 
   root to: "pages#index"
 
   # shallow do
-  resources :flights do
+  resources :flights, only: [:index] do
     collection do
       get :search
+      get "/:flight_id/booking/seats/:seats" => "bookings#show", as: :book
     end
+  end
 
-    resources :bookings do
-      collection do
-        get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
-      end
+  resources :bookings, only: [:create] do
+    collection do
+      get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
+      get "/:booking_id/confirmation" => "bookings#confirmation",
+          as: :confirmation
     end
   end
   # end

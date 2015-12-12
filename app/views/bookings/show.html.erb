@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row booking">
-    <%= form_for(@booking, url: {action: "create"}) do |f| %>
+    <%= form_for @booking do |f| %>
     <%= f.hidden_field :flight_id %>
       <div class="col l8" id="passengers">
         <h5>Passengers Details</h5>

@@ -1,2 +1,11 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<div class="">
+  <div class="container">
+    <div class="">
+      <h5>Flight Time Board</h5>
+      <div id="flight-time-board">
+        <%= render @flight %>
+        <%= link_to "...load more", "#" %>
+      </div>
+    </div>
+  </div>
+</div>
