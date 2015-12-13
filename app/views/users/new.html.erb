@@ -1,0 +1,31 @@
+<div class="container signup">
+  <h4>Sign Up form</h4>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Some error occured</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.text_field :name, placeholder: "Enter your name" %>
+    </div>
+    <div>
+      <%= f.email_field :email, placeholder: "Enter your email address" %>
+    </div>
+    <div>
+      <%= f.password_field :password, placeholder: "Choose a password" %>
+    </div>
+    <div>
+      <%= f.password_field :password_confirmation, placeholder: "Repeat password" %>
+    </div>
+    <div>
+      <%= f.submit "Signup", class: "btn" %>
+    </div>
+  <% end %>
+</div>
