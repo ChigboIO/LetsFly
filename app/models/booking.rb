@@ -14,7 +14,7 @@ class Booking < ActiveRecord::Base
     end
   end
 
-  def self.make_new(params)
+  def self.make_new(params, current_user)
     book = new(params)
     book.user_id = current_user.id if current_user
     book.booking_number = Random.rand(1_000_000_000..9_999_999_999).to_s

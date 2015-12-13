@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookings, only: [:create] do
+  resources :bookings, only: [:create, :index, :edit, :destroy] do
     collection do
       get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
       get "/:booking_id/payment" => "bookings#payment", as: :payment

@@ -1,4 +1,10 @@
 class BookingsController < ApplicationController
+  before_action :authorize, only: [:index]
+
+  def index
+    @bookings = Booking.where(user_id: current_user.id)
+  end
+
   def book
     @flight = Flight.find(params[:flight_id])
     @booking = Booking.new(flight_id: params[:flight_id])
@@ -6,7 +12,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    book = Booking.make_new(booking_params)
+    book = Booking.make_new(booking_params, current_user)
 
     if book.save
       book.flight.update(available_seats: book.remaining_seats)

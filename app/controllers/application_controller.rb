@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to login_url, "Login to perform the action"  if current_user.nil?
+    redirect_to(
+      login_url,
+      alert: "Login to perform this action"
+    ) if current_user.nil?
   end
 
   helper_method :current_user
