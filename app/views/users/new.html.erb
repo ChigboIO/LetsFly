@@ -3,7 +3,7 @@
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
-        <h2>Some error occured</h2>
+        <h5>Some error occured</h5>
         <ul>
           <% @user.errors.full_messages.each do |error| %>
             <li><%= error %></li>
