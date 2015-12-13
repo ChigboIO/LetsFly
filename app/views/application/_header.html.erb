@@ -6,15 +6,27 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down top-nav">
           <li><a href="<%= flights_path %>">All Flight</a></li>
-          <li><a href="<%=  %>" class="btn auth-btn">signin</a></li>
-          <li><a href="<%=  %>" class="btn auth-btn">signup</a></li>
-          <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <% if current_user %>
+            <li><a href="<%= "#" %>" class="">Past Booking</a></li>
+            <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>
+            <li><a href="<%= logout_url %>" class="">logout</a></li>
+          <% else %>
+            <li class="no-hover"><a href="<%= login_url %>" class="btn auth-btn">signin</a></li>
+            <li class="no-hover"><a href="<%= signup_url %>" class="btn auth-btn">signup</a></li>
+            <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <% end %>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="<%= flights_path %>">All flight</a></li>
-          <li><a href="<%=  %>">signin</a></li>
-          <li><a href="<%=  %>">signup</a></li>
-          <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <% if current_user %>
+            <li><a href="<%= login_url %>" class="">Past Booking</a></li>
+            <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>
+            <li><a href="<%= logout_url %>" class="">logout</a></li>
+          <% else %>
+            <li><a href="<%= login_url %>">signin</a></li>
+            <li><a href="<%= signup_url %>">signup</a></li>
+            <!-- <li><a href="mobile.html">Mobile</a></li> -->
+          <% end %>
         </ul>
       </div>
     </div>
