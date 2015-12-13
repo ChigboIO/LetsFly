@@ -6,8 +6,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    book = Booking.new(booking_params)
+    book = Booking.make_new(booking_params)
+
     if book.save
+      book.flight.update(available_seats: book.remaining_seats)
       redirect_to checkout_bookings_path(booking_id: book.id)
     else
       redirect_to :back
@@ -19,9 +21,11 @@ class BookingsController < ApplicationController
   end
 
   def payment
-    # perform payment operations here and redirect to confirmation page
-    # Send mail to the passenger.
     booking_id = params[:booking_id]
+
+    # perform payment operations here and redirect to confirmation page
+    Booking.find(booking_id).update(paid: true)
+    ConfirmationMailer.thank_you(booking_id).deliver_now
     redirect_to confirmation_bookings_path(booking_id)
   end
 

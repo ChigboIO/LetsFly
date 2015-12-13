@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col l4">
+    <h5>Flight Details</h5>
+    <div class="row">
+      <div class="col l5 bold">Airline</div>
+      <div class="col l7"><%= @booking.flight.airline %></div>
+    </div>
+    <div class="row">
+      <div class="col l5 bold">Flight Number</div>
+      <div class="col l7"><%= @booking.flight.id %></div>
+    </div>
+    <div class="row">
+      <div class="col l5 bold">Origin Airport</div>
+      <div class="col l7">
+        <div>
+          <%= @booking.flight.origin_airport.name + ", " + @booking.flight.origin_airport.state %> state
+        </div>
+        <div>
+          <% d_date = Date.parse(@booking.flight.departure_datetime.to_s) %>
+          <%= d_date.strftime("%A, #{d_date.day.ordinalize} %b %Y") %>
+        </div>
+        <div>
+          <% d_time = Time.parse(@booking.flight.departure_datetime.to_s) %>
+          <%= d_time.strftime("%l:%M %P") %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l5 bold">Destination Airport</div>
+      <div class="col l7">
+        <div>
+          <%= @booking.flight.destination_airport.name + ", " + @booking.flight.destination_airport.state %> state
+        </div>
+        <div>
+          <% a_date = Date.parse(@booking.flight.arrival_datetime.to_s) %>
+          <%= a_date.strftime("%A, #{a_date.day.ordinalize} %b %Y") %>
+        </div>
+        <div>
+          <% a_time = Time.parse(@booking.flight.arrival_datetime.to_s) %>
+          <%= a_time.strftime("%l:%M %P") %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col l8" id="passengers">
+    <h5>Passengers Details</h5>
+    <% @booking.passengers.each_with_index do |p, index| %>
+      <div class="passenger-div">
+        <div>
+          <h5><%= "(" + (index + 1).to_s + ") " + p.name %></h5>
+        </div>
+        <div class="">
+          <%= p.email %>
+        </div>
+        <div class="">
+          <%= p.phone %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

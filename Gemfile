@@ -32,7 +32,7 @@ gem "font-awesome-sass"
 gem "faker"
 
 # Use ActiveModel has_secure_password
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Use Unicorn as the app server
 # gem "unicorn"
@@ -49,6 +49,7 @@ group :development, :test do
   gem "rspec-rails", "~> 3.0"
   gem "capybara"
   gem "factory_girl_rails"
+  gem "letter_opener"
 end
 
 group :development do
