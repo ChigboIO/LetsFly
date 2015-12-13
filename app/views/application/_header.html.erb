@@ -7,7 +7,7 @@
         <ul class="right hide-on-med-and-down top-nav">
           <li><a href="<%= flights_path %>">All Flight</a></li>
           <% if current_user %>
-            <li><a href="<%= "#" %>" class="">Past Booking</a></li>
+            <li><a href="<%= bookings_url %>" class="">My Bookings</a></li>
             <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>
             <li><a href="<%= logout_url %>" class="">logout</a></li>
           <% else %>
