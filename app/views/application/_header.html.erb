@@ -6,6 +6,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down top-nav">
           <li><a href="<%= flights_path %>">All Flight</a></li>
+          <li><a href="<%= manage_bookings_path %>">Manage Bookings</a></li>
           <% if current_user %>
             <li><a href="<%= bookings_url %>" class="">My Bookings</a></li>
             <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>
@@ -18,6 +19,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="<%= flights_path %>">All flight</a></li>
+          <li><a href="<%= manage_bookings_path %>">Manage bookings</a></li>
           <% if current_user %>
             <li><a href="<%= login_url %>" class="">Past Booking</a></li>
             <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>

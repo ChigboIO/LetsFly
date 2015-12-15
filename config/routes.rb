@@ -16,8 +16,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookings, only: [:create, :index, :edit, :destroy] do
+  resources :bookings, only: [:create, :index, :edit, :update, :destroy] do
     collection do
+      get :manage
+      get :search
       get "/:booking_id/checkout" => "bookings#checkout", as: :checkout
       get "/:booking_id/payment" => "bookings#payment", as: :payment
       get "/:booking_id/confirmation" => "bookings#confirmation",

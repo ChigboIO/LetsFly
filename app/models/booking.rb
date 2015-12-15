@@ -26,4 +26,10 @@ class Booking < ActiveRecord::Base
   def remaining_seats
     flight.available_seats - passengers.size
   end
+
+  def release_seats
+    flight.available_seats += passengers.size
+    flight.save
+    destroy
+  end
 end
