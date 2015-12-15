@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container body">
   <div class="row booking">
     <%= form_for @booking do |f| %>
     <%= f.hidden_field :flight_id %>
@@ -7,6 +7,7 @@
         <%= f.fields_for :passengers do |p| %>
           <div class="passenger-div">
             <div>
+              <%= p.hidden_field :id %>
               <%= p.text_field :name, placeholder: "Passenger Name", required: "required" %>
             </div>
             <div class="row">
@@ -69,7 +70,11 @@
         <div class="row">
           <div class="col l5 bold"></div>
           <div class="col l7">
-            <%= f.submit "Proceed to Checkout", class: "btn" %>
+            <% if @booking.new_record? %>
+              <%= f.submit "Proceed to Checkout", class: "btn" %>
+            <% else %>
+              <%= f.submit "Update", class: "btn" %>
+            <% end %>
           </div>
         </div>
       </div>

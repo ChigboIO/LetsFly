@@ -1,0 +1,11 @@
+<div class="container body manage">
+  <h5>
+    Enter your booking Number
+  </h5>
+  <div>
+    <%= form_tag search_bookings_path, method: :get do %>
+      <%= number_field_tag :booking_number %>
+      <%= submit_tag "Search", class: "btn" %>
+    <% end %>
+  </div>
+</div>

@@ -6,7 +6,7 @@
     </div>
     <div class="col l4">
       <!-- <div>To</div> -->
-      <%= f.select :destination_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Desctination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
+      <%= f.select :destination_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Destination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
     </div>
     <div class="col l2">
       <!-- <div class="home-input-label">Travel Date</div> -->
@@ -14,7 +14,7 @@
     </div>
     <div class="col l1">
       <!-- <div class="home-input-label">Travelers</div> -->
-      <%= f.number_field :available_seats, { value: 1, placeholder: "Number of Travelers", class: "home-input", required: "required", "min" => 1 } %>
+      <%= f.number_field :available_seats, { value: 1, placeholder: "Number of Travelers", class: "home-input", required: "required", min: 1 } %>
     </div>
     <div class="col l1">
       <%= f.button class: "btn"  do %>

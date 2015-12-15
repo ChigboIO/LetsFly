@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container body">
   <div class="booking">
-    <% if @bookings.nil? %>
+    <% if @bookings.blank? %>
       <p>You have not booked any flight with us. :D</p>
     <% else %>
       <% @bookings.each do |booking| %>
