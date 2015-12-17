@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
       booking.id,
       "Updated Passengers' Information"
     ).deliver_now
-    
+
     redirect_to :back
   end
 

@@ -1,59 +1,70 @@
 // Style for will pagination
+$white: #ffffff;
+$colour1: #999999;
+$colour2: #dddddd;
+$colour3: #2e6ab1;
+$colour4: #105cb6;
+$colour5: #9aafe5;
+$colour6: #000033;
+
 .digg-pagination {
-  background: white;
+  background: $white;
   cursor: default;
 
-  a, span, em {
-    padding: 0.2em 0.5em;
+  a,
+  span,
+  em {
     display: block;
     float: left;
     margin-right: 1px;
+    padding: 0.2em 0.5em;
   }
 
   .disabled {
-    color: #999999;
-    border: 1px solid #dddddd;
+    border: 1px solid $colour2;
+    color: $colour1;
   }
 
   .current {
+    background: $colour3;
+    border: 1px solid $colour3;
+    color: $white;
     font-style: normal;
     font-weight: bold;
-    background: #2e6ab1;
-    color: white;
-    border: 1px solid #2e6ab1;
   }
 
   a {
+    border: 1px solid $colour5;
+    color: $colour4;
     text-decoration: none;
-    color: #105cb6;
-    border: 1px solid #9aafe5;
 
-    &:hover, &:focus {
-      color: #000033;
-      border-color: #000033;
+    &:hover,
+    &:focus {
+      border-color: $colour6;
+      color: $colour6;
     }
   }
 
   .page_info {
-    background: #2e6ab1;
-    color: white;
-    padding: 0.4em 0.6em;
-    width: 22em;
+    background: $colour3;
+    color: $white;
     margin-bottom: 0.3em;
+    padding: 0.4em 0.6em;
     text-align: center;
+    width: 22em;
 
     b {
-      color: #000033;
-      background: #2e6ab1 + 60;
+      background: $colour3 + 60;
+      color: $colour6;
       padding: 0.1em 0.25em;
     }
   }
   /* self-clearing method: */
   &:after {
     content: ".";
+    clear: both;
     display: block;
     height: 0;
-    clear: both;
     visibility: hidden;
   }
 
@@ -64,6 +75,10 @@
   *:first-child+html & {
     overflow: hidden;
   }
+}
+
+.paging {
+  margin: 1em;
 }
 
 /*
@@ -93,7 +108,7 @@
     -moz-border-radius: 1em;
     -webkit-border-radius: 1em;
     border-radius: 1em;
-    text-shadow: rgba(white, .8) 1px 1px 1px;
+    text-shadow: rgba($white, .8) 1px 1px 1px;
   }
 
   a {
@@ -126,14 +141,14 @@
   }
 
   a {
-    border: 1px solid #dddddd;
+    border: 1px solid $colour2;
     color: #0063dc;
     text-decoration: none;
 
     &:hover, &:focus {
       border-color: #003366;
       background: #0063dc;
-      color: white;
+      color: $white;
     }
   }
 
@@ -155,7 +170,3 @@
   }
 }
 */
-
-.paging {
-  margin: 1em;
-}
