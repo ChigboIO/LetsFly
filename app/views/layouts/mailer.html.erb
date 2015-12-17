@@ -1,4 +1,42 @@
 <html>
+  <style type="text/css">
+.row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-bottom: 20px;
+}
+
+.row .col {
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+}
+
+.row .col.l5 {
+    width: 33.33333%;
+}
+
+.row .col.l2 {
+    width: 16.66667%;
+}
+
+@media only screen and (min-width: 993px)
+.row .col.l7 {
+    width: 66.66667%;
+}
+
+.flight-no {
+  font-size: 14px;
+  background-color: $my-grey;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+  </style>
   <body>
     <%= yield %>
   </body>

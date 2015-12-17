@@ -1,7 +1,8 @@
 class FlightsController < ApplicationController
   def index
     @flight = Flight.new
-    @flights = Flight.order("RANDOM()").limit(50)
+    @flights = Flight.order("RANDOM()").
+      paginate(:page => params[:page], :per_page => 30)
     @seats = 1
     @airports = Airport.all
   end
