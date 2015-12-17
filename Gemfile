@@ -36,6 +36,8 @@ gem "bcrypt", "~> 3.1.7"
 
 gem "will_paginate", "~> 3.0.6"
 
+gem "coveralls", require: false
+
 # Use Unicorn as the app server
 # gem "unicorn"
 
@@ -52,7 +54,7 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "letter_opener"
-  gem 'pry-rails'
+  gem "pry-rails"
 end
 
 group :development do
