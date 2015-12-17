@@ -6,6 +6,7 @@
     
     <div class="row">
       <div class="col l5">
+        <h5>FROM</h5>
         <div>
           <%= @booking.flight.origin_airport.name + ", " + @booking.flight.origin_airport.state %> state
         </div>
@@ -18,6 +19,7 @@
       </div>
       <div class="col l2"> >>> </div>
       <div class="col l5">
+        <h5>TO</h5>
         <div>
           <%= @booking.flight.destination_airport.name + ", " + @booking.flight.destination_airport.state %> state
         </div>
