@@ -1,14 +1,13 @@
 <div class="container body">
   <div class="row booking">
-    <div class="col l9">
+    <div class="col l8">
       <%= render "content" %>
     </div>
-    <div class="col l3" id="passengers">
-      <h5>Payment</h5>
+    <div class="col l4" id="passengers">
+      <h5>Thank You</h5>
       
       <div class="row">
-        <div class="col l5 bold">Total Amount</div>
-        <div class="col l7">NGN <%= @booking.flight.price %> / passenger</div>
+        <div class="col l12">Your booking and payment was successful. A copy this confirmation page was sent to your email address. Please take note of your "Booking Number", for you will need it to manage this booking. It is also in the mail sent to you.</div>
       </div>
       <div class="row">
         <div class="col l5 bold">

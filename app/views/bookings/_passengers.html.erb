@@ -1,0 +1,18 @@
+<h5>Passengers</h5>
+<div class="">
+  <table class="table">
+    <thead>
+      <tr><th>SN</th><th>Name</th><th>Email</th><th>Phone</th></tr>
+    </thead>
+    <tbody>
+      <% @booking.passengers.each_with_index do |p, index| %>
+        <tr>
+          <td><%= (index + 1).to_s + "> " %></td>
+          <td><%= p.name %></td>
+          <td><%= p.email %></td>
+          <td><%= p.phone %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

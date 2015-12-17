@@ -1,5 +1,10 @@
 <div class="container body">
   <div class="row booking">
+    
+    <div class="col l8" id="passengers">
+      <%= render "passengers" %>
+    </div>
+    
     <div class="col l4">
       <h5>Flight Details</h5>
       <div class="row">
@@ -48,25 +53,7 @@
           <%= @booking.booking_number %>
         </div>
       </div>
-    </div>
 
-    <div class="col l5" id="passengers">
-      <h5>Passengers Details</h5>
-      <% @booking.passengers.each_with_index do |p, index| %>
-        <div class="passenger-div">
-          <div>
-            <h5><%= "(" + (index + 1).to_s + ") " + p.name %></h5>
-          </div>
-          <div class="">
-            <%= p.email %>
-          </div>
-          <div class="">
-            <%= p.phone %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col l3" id="passengers">
       <h5>Payment</h5>
       
       <div class="row">
