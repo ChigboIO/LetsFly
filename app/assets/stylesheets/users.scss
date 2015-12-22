@@ -1,4 +1,10 @@
+$red: #991111;
+
 .signup.container {
   min-height: 23em;
   width: 50% !important;
+}
+
+.error-messages {
+  color: $red;
 }

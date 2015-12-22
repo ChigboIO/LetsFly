@@ -8,9 +8,17 @@
           <li><a href="<%= flights_path %>">All Flight</a></li>
           <li><a href="<%= manage_bookings_path %>">Manage Bookings</a></li>
           <% if current_user %>
-            <li><a href="<%= bookings_url %>" class="">My Bookings</a></li>
-            <li><a href="<%= "#" %>" class=""><%= current_user.name %></a></li>
-            <li><a href="<%= logout_url %>" class="">logout</a></li>
+            <li>
+              <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                <%= current_user.name %><i class="material-icons right">arrow_drop_down</i>
+              </a>
+
+              <ul id="dropdown1" class="dropdown-content">
+                <li><a href="<%= bookings_url %>" class="">My Bookings</a></li>
+                <li class="divider"></li>
+                <li><a href="<%= logout_url %>" class="">logout</a></li>
+              </ul>
+            </li>
           <% else %>
             <li class="no-hover"><a href="<%= login_url %>" class="btn auth-btn">signin</a></li>
             <li class="no-hover"><a href="<%= signup_url %>" class="btn auth-btn">signup</a></li>
