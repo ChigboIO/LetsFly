@@ -71,12 +71,6 @@ or
 rake
 ```
 
-The app is a work in progress, as such, it has the following limitations among others.
-
-Booking can not be done via any other payment gateway.The app assumes that booking is cancelled when payment has not been made.App doesn't have a private domain name yet.
-
-You can also check <a href="https://fly.herokuapp.com" target="blank">the hosted version</a> of this app
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/andela-echigbo/letsfly. This project is intended to be a safe and welcoming space for collaboration. To contribute to this work:
