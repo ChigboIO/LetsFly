@@ -3,6 +3,11 @@ class Booking < ActiveRecord::Base
   has_many :passengers
   belongs_to :user
 
+  validates :flight_id, presence: true
+  validates :booking_number, presence: true
+  validates :amount, presence: true
+  validates :paid, presence: false
+
   accepts_nested_attributes_for :passengers
   # reject_if lambda { |attr| attr.}
 

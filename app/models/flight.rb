@@ -4,8 +4,18 @@ class Flight < ActiveRecord::Base
   has_many :bookings
   has_many :passengers, through: :bookings
 
+  validates :flight_no, presence: true
+  validates :airline, presence: true
+  validates :origin_airport_id, presence: true
+  validates :destination_airport_id, presence: true
+  validates :departure_datetime, presence: true
+  validates :arrival_datetime, presence: true
+  validates :capacity, presence: true
+  validates :available_seats, presence: true
+  validates :price, presence: true
+
   def self.get_match(params)
-    match = Flight.all
+    match = all
     match = match.where(
       "origin_airport_id = ?",
       params[:origin_airport_id]
@@ -26,6 +36,7 @@ class Flight < ActiveRecord::Base
       Date.parse(params[:departure_datetime]).strftime("%Y-%m-%d")
     ) unless params[:departure_datetime] == ""
 
+    # match = all if match.nil?
     match
   end
 end

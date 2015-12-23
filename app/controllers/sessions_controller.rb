@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: "Welcome back"
     else
-      flash.now.alert = "Incorrect username or password"
-      render :new
+      redirect_to login_path, alert: "Incorrect username or password"
     end
   end
 

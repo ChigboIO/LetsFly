@@ -2,7 +2,7 @@
   <h4>Sign Up form</h4>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
-      <div class="error_messages">
+      <div class="error-messages">
         <h5>Some error occured</h5>
         <ul>
           <% @user.errors.full_messages.each do |error| %>
@@ -13,7 +13,8 @@
     <% end %>
 
     <div>
-      <%= f.text_field :name, placeholder: "Enter your name" %>
+      <%# f.label :name, "Name" %>
+      <%= f.text_field :name, placeholder: "Enter your name", class: "validate" %>
     </div>
     <div>
       <%= f.email_field :email, placeholder: "Enter your email address" %>
