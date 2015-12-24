@@ -28,22 +28,22 @@
         null,
         null,
         1,
-        50,
-        50,
-        50,
-        50,
-        50,
+        200,
+        200,
+        200,
+        200,
+        200,
         null,
-        50,
+        200,
         null,
         null,
-        50,
-        50,
-        50,
-        50,
-        50,
-        50,
-        50,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
         null
       ],
       "c:/Users/Science/Documents/GoogleDrive/CODES/RubyProjects/letsfly/app/models/airport.rb": [
@@ -575,7 +575,6 @@
         null,
         1,
         1,
-        1,
         null,
         null,
         null
@@ -818,6 +817,6 @@
         null
       ]
     },
-    "timestamp": 1450848632
+    "timestamp": 1450927693
   }
 }
