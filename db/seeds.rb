@@ -23,7 +23,7 @@ airlines = [
   "Kabo Air", "Max Air", "Med-View Airline", "Overland Airways", "TAT Nigeria"
 ]
 
-50.times do |i|
+200.times do |i|
   flight_time = Random.rand(45..180)
   date_time = Faker::Time.forward(21, :morning)
   flight = Flight.new
