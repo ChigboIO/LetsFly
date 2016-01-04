@@ -3,47 +3,59 @@
     <% if @bookings.blank? %>
       <p>You have not booked any flight with us. :D</p>
     <% else %>
-      <% @bookings.each do |booking| %>
-        <div class="row">
-          <div class="col l2">
-            <div>
-              <%= booking.flight.airline %>
-            </div>
-          </div>
-          <div class="col l4">
-            <div>
-              <%= booking.flight.origin_airport.name_with_state %>
-            </div>
-            <div>
-              <%= booking.flight.departure_datetime %>
-            </div>
-          </div>
-          <div class="col l4">
-            <div>
-              <%= booking.flight.destination_airport.name_with_state %>
-            </div>
-            <div>
-              <%= booking.flight.arrival_datetime %>
-            </div>
-          </div>
-          <div class="col l1">
-            <div>
-              <%= booking.passengers.size %><br>
-              passenger(s)
-            </div>
-          </div>
-          <div class="col l1">
-            <div>
-              <% if booking.flight.departure_datetime > Time.now %>
-                <span><%= link_to "Manage", edit_booking_path(booking.id) %></span>
-                <span><%= link_to "Cancel", booking_path(booking.id), method: :delete %></span>
-              <% else %>
-                <span>departed</span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <table class="bordered">
+        <thead>
+          <tr>
+            <th>Book Number</th>
+            <th>Airline</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Passengers</th>
+            <th>Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings.each do |booking| %>
+            <tr>
+              <td>
+                <%= booking.booking_number %>
+              </td>
+              <td>
+                <%= booking.flight.airline %>
+              </td>
+              <td>
+                <div>
+                  <%= booking.flight.origin_airport.name_with_state %>
+                </div>
+                <div>
+                  <%= booking.flight.departure_datetime %>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <%= booking.flight.destination_airport.name_with_state %>
+                </div>
+                <div>
+                  <%= booking.flight.arrival_datetime %>
+                </div>
+              </td>
+              <td>
+                <%= booking.passengers.size %>
+              </td>
+              <td>
+                <div>
+                  <% if booking.flight.departure_datetime > Time.now %>
+                    <span><%= link_to "Update", edit_booking_path(booking.id) %></span> |
+                    <span><%= link_to "Cancel", booking_path(booking.id), method: :delete %></span>
+                  <% else %>
+                    <span>departed</span>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>
