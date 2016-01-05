@@ -11,6 +11,12 @@ require "shoulda/matchers"
 require "capybara/rspec"
 require "coveralls"
 Coveralls.wear!
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
+# require 'webmock/rspec'
+# WebMock.disable_net_connect!(allow_localhost: true)
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -72,3 +78,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.default_driver = :selenium
