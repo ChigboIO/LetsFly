@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# ruby "2.1.6"
+ruby "2.1.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.4"
@@ -38,6 +38,8 @@ gem "will_paginate", "~> 3.0.6"
 
 gem "coveralls", require: false
 
+# gem "paypal-express"
+
 # Use Unicorn as the app server
 # gem "unicorn"
 
@@ -52,11 +54,14 @@ group :development, :test do
   gem "sqlite3"
   gem "rspec-rails", "~> 3.0"
   gem "capybara"
+  gem "selenium-webdriver"
   gem "factory_girl_rails"
   gem "shoulda-matchers", "~> 3.0.1"
   gem "letter_opener"
   gem "pry-rails"
   gem "database_cleaner"
+  gem "codeclimate-test-reporter", require: false
+  # gem "webmock"
 end
 
 group :development do

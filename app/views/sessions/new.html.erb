@@ -1,6 +1,6 @@
 <div class="container signup">
   <h4>Login form</h4>
-  <div class="error_messages"><%= flash['alert'] %></div>
+  <div class="error-messages"><%= flash['alert'] %></div>
   <%= form_tag sessions_path do %>
     <div>
       <%= email_field_tag :email, "", placeholder: "Email address" %>

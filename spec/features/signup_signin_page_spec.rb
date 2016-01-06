@@ -28,14 +28,14 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
         # expect(page).to have_current_path(root_path)
         expect(current_path).to eq(root_path)
         expect(page).to have_content("Emmanuel")
-        expect(page).to have_content("logout")
+        # expect(page).to have_content("logout")
         expect(page).to have_no_content("signup")
         expect(page).to have_no_content("signin")
         # byebug
       end
 
       scenario "with invalid email" do
-        sign_up_with "Emmanuel", "invalid_email", "password"
+        sign_up_with "Emmanuel", "invalid_email@example", "password"
 
         expect(page).to have_content("Sign Up form")
 
@@ -70,12 +70,13 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
 
   context "Signin Page" do
     context "When coming from home page" do
-      scenario "page has content 'Signin form'" do
+      scenario "page has content 'Login form'" do
         visit root_path
         within(:css, "ul.top-nav") do
+          expect(page).to have_selector(:link_or_button, "signin")
           click_link "signin"
         end
-        expect(current_path).to eq(login_path)
+        expect(page).to have_current_path(login_path)
         expect(page).to have_content("Login form")
       end
     end
@@ -93,7 +94,7 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
         # expect(page).to have_current_path(root_path)
         expect(current_path).to eq(root_path)
         expect(page).to have_content("Emmanuel")
-        expect(page).to have_content("logout")
+        # expect(page).to have_content("logout")
         expect(page).to have_no_content("signup")
         expect(page).to have_no_content("signin")
       end

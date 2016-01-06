@@ -63,8 +63,7 @@
       <div class="row">
         <div class="col l5 bold"></div>
         <div class="col l7">
-          <%= link_to "Make Payment", payment_bookings_path(@booking.id),
-          class: "btn" %>
+          <%= link_to "Make Payment", paypal_url(@booking, payment_bookings_url(@booking.id)), class: "btn" %>
         </div>
       </div>
 
