@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user_id: current_user.id)
+    # @flights = @bookings.flight.order("RANDOM()").
+    #            paginate(page: params[:page], per_page: 30)
   end
 
   def book
@@ -18,7 +20,7 @@ class BookingsController < ApplicationController
       book.flight.update(available_seats: book.remaining_seats)
       redirect_to checkout_bookings_path(booking_id: book.id)
     else
-      redirect_to :back
+      redirect_to :back, alert: "Sorry, your flight was not booked"
     end
   end
 
@@ -48,14 +50,14 @@ class BookingsController < ApplicationController
       "Updated Passengers' Information"
     ).deliver_now
 
-    redirect_to :back
+    redirect_to :back, notice: "Booking updated successfully!"
   end
 
   def destroy
     booking = Booking.find(params[:id])
     # pry.binding
     booking.release_seats
-    redirect_to :back
+    redirect_to :back, notice: "Booking canceled successfully!"
   end
 
   def checkout
@@ -72,7 +74,10 @@ class BookingsController < ApplicationController
       "Thank You For Your Patronage"
     ).deliver_now
 
-    redirect_to confirmation_bookings_path(booking_id)
+    redirect_to(
+      confirmation_bookings_path(booking_id),
+      notice: "Payment confirmed!"
+    )
   end
 
   def confirmation

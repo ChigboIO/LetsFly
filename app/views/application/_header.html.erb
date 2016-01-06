@@ -42,3 +42,15 @@
     </div>
   </nav>
 </div>
+<div>
+  <% unless flash['notice'].nil? %>
+    <script type="text/javascript">
+      Materialize.toast("<span><%= flash['notice'] %></span>", 5000);
+    </script>
+  <% end %>
+  <% unless flash['alert'].nil? %>
+    <script type="text/javascript">
+      Materialize.toast("<span><%= flash['alert'] %></span>", 5000);
+    </script>
+  <% end %>
+<end>

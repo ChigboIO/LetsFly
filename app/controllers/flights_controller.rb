@@ -1,8 +1,7 @@
 class FlightsController < ApplicationController
   def index
     @flight = Flight.new
-    @flights = Flight.order("RANDOM()").
-               paginate(page: params[:page], per_page: 30)
+    @flights = Flight.paginate(page: params[:page], per_page: 30)
     @seats = 1
     @airports = Airport.all
   end
@@ -12,7 +11,6 @@ class FlightsController < ApplicationController
     @seats = flight_params[:available_seats]
     respond_to do |format|
       format.html
-      format.json
       format.js
     end
   end
