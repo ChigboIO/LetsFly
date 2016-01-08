@@ -1,4 +1,4 @@
-<% unless @flights.blank? %>
+<% unless @presenter.flights.blank? %>
   <table class="bordered">
     <thead>
       <tr>
@@ -11,15 +11,15 @@
       </tr>
     </thead>
     <tbody>
-      <% @flights.each do |flight| %>
+      <% @presenter.flights.each do |flight| %>
         <tr>
           <td>Img</td>
           <td><%= flight.airline %></td>
-          <td><%= flight.origin_airport.name %>, <%= flight.origin_airport.state %></td>
-          <td><%= flight.destination_airport.name %>, <%= flight.destination_airport.state %></td>
-          <td><%= flight.departure_datetime %></td>
-          <td><%= flight.arrival_datetime %></td>
-          <td><%= link_to "book", book_flights_path(flight.id, @seats), class: "btn" %></td>
+          <td><%= flight.origin_airport.decorate.name_with_state %></td>
+          <td><%= flight.destination_airport.decorate.name_with_state %></td>
+          <td><%= flight.decorate.departure_d %> <br> <%= flight.decorate.departure_t %></td>
+          <td><%= flight.decorate.arrival_d %> <br> <%= flight.decorate.arrival_t %></td>
+          <td><%= link_to "book", book_flights_path(flight.id, @presenter.seats), class: "btn" %></td>
         </tr>
       <% end %>
     </tbody>

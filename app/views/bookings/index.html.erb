@@ -25,7 +25,7 @@
               </td>
               <td>
                 <div>
-                  <%= booking.flight.origin_airport.name_with_state %>
+                  <%= booking.flight.origin_airport.decorate.name_with_state %>
                 </div>
                 <div>
                   <%= booking.flight.departure_datetime %>
@@ -33,7 +33,7 @@
               </td>
               <td>
                 <div>
-                  <%= booking.flight.destination_airport.name_with_state %>
+                  <%= booking.flight.destination_airport.decorate.name_with_state %>
                 </div>
                 <div>
                   <%= booking.flight.arrival_datetime %>

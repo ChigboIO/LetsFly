@@ -30,13 +30,8 @@ body {
 .search-form-section {
   background-color: transparentize($my-black, 0.3);
   border-radius: 0.5em;
-  // height: 10em;
   margin: 1.5em 0;
   padding: 1em 1.5em;
-
-  button {
-    // background-color: transparent;
-  }
 }
 
 .home-input {
@@ -52,12 +47,6 @@ body {
   .select-dropdown {
     border-bottom: none !important;
   }
-}
-
-.up-left-rotate {
-  // -ms-transform: rotate(315deg);
-  // -webkit-transform: rotate(315deg);
-  // transform: rotate(315deg);
 }
 
 .flight-board {

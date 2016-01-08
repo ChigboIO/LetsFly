@@ -18,7 +18,6 @@ RSpec.describe Passenger, type: :model do
 
   describe "ActiveModel Validation" do
     it { expect(passenger).to validate_presence_of(:name) }
-
     it { expect(passenger).to allow_value("Emmanuel Chigbo").for(:name) }
     it do
       expect(passenger).to allow_value("emmanuel.chigbo@andela.com").for(:email)

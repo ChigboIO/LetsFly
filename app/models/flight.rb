@@ -14,29 +14,51 @@ class Flight < ActiveRecord::Base
   validates :available_seats, presence: true
   validates :price, presence: true
 
+  scope(
+    :not_departed,
+    lambda do
+      where("departure_datetime > ?", Time.now)
+    end
+  )
+
+  scope(
+    :coming_from,
+    lambda do |id|
+      where("origin_airport_id = ?", id) unless id == ""
+    end
+  )
+
+  scope(
+    :going_to,
+    lambda do |id|
+      where("destination_airport_id = ?", id) unless id == ""
+    end
+  )
+
+  scope(
+    :has_enough_seats,
+    lambda do |seats|
+      where("available_seats >= ?", seats) unless seats == 0
+    end
+  )
+
+  scope(
+    :takeoff_on,
+    lambda do |date|
+      where(
+        "Date(departure_datetime) = ?", Date.parse(date).strftime("%Y-%m-%d")
+      ) unless date == ""
+    end
+  )
+
   def self.get_match(params)
-    match = all
-    match = match.where(
-      "origin_airport_id = ?",
-      params[:origin_airport_id]
-    ) unless params[:origin_airport_id] == ""
+    coming_from(params[:origin_airport_id]).
+      going_to(params[:destination_airport_id]).
+      has_enough_seats(params[:available_seats].to_i).
+      takeoff_on(params[:departure_datetime])
+  end
 
-    match = match.where(
-      "destination_airport_id = ?",
-      params[:destination_airport_id]
-    ) unless params[:destination_airport_id] == ""
-
-    match = match.where(
-      "available_seats >= ?",
-      params[:available_seats].to_i
-    ) unless params[:available_seats] == ""
-
-    match = match.where(
-      "Date(departure_datetime) = ?",
-      Date.parse(params[:departure_datetime]).strftime("%Y-%m-%d")
-    ) unless params[:departure_datetime] == ""
-
-    # match = all if match.nil?
-    match
+  def decorate
+    @decorate ||= FlightDecorator.new(self)
   end
 end

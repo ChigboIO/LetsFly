@@ -3,18 +3,17 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user_id: current_user.id)
-    # @flights = @bookings.flight.order("RANDOM()").
-    #            paginate(page: params[:page], per_page: 30)
   end
 
   def book
-    @flight = Flight.find(params[:flight_id])
-    @booking = Booking.new(flight_id: params[:flight_id])
+    flight = Flight.find(params[:flight_id])
+    @booking = Booking.new(flight_id: flight.id)
     params[:seats].to_i.times { @booking.passengers.build }
   end
 
   def create
-    book = Booking.make_new(booking_params, current_user)
+    book = Booking.new(booking_params)
+    book.user_id = current_user.id if current_user
 
     if book.save
       book.flight.update(available_seats: book.remaining_seats)
@@ -55,7 +54,6 @@ class BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    # pry.binding
     booking.release_seats
     redirect_to :back, notice: "Booking canceled successfully!"
   end
@@ -67,7 +65,6 @@ class BookingsController < ApplicationController
   def payment
     booking_id = params[:booking_id]
 
-    # perform payment operations here and redirect to confirmation page
     Booking.find(booking_id).update(paid: true)
     ConfirmationMailer.thank_you(
       booking_id,

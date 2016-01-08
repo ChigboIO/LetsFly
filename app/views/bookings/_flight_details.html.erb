@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col l5 bold">Airline</div>
+  <div class="col l7"><%= @booking.flight.airline %></div>
+</div>
+<div class="row">
+  <div class="col l5 bold">Flight Number</div>
+  <div class="col l7"><%= @booking.flight.id %></div>
+</div>
+<div class="row">
+  <div class="col l5 bold">Origin Airport</div>
+  <div class="col l7">
+    <div>
+      <%= @booking.flight.origin_airport.decorate.name_with_state %> state
+    </div>
+    <div>
+      <%= @booking.flight.decorate.departure_d %>
+    </div>
+    <div>
+    <%= @booking.flight.decorate.departure_t %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col l5 bold">Destination Airport</div>
+  <div class="col l7">
+    <div>
+      <%= @booking.flight.destination_airport.decorate.name_with_state %> state
+    </div>
+    <div>
+      <%= @booking.flight.decorate.arrival_d %>
+    </div>
+    <div>
+    <%= @booking.flight.decorate.arrival_t %>
+    </div>
+  </div>
+</div>

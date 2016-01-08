@@ -4,12 +4,16 @@ class Booking < ActiveRecord::Base
   belongs_to :user
 
   validates :flight_id, presence: true
-  validates :booking_number, presence: true
-  validates :amount, presence: true
-  validates :paid, presence: false
 
   accepts_nested_attributes_for :passengers
-  # reject_if lambda { |attr| attr.}
+
+  before_create :make_new
+
+  def make_new
+    self.paid = false
+    self.booking_number = Random.rand(1_000_000_000..9_999_999_999).to_s
+    self.amount = flight.price * passengers.size
+  end
 
   def user_or_passenger
     if user.nil?
@@ -17,15 +21,6 @@ class Booking < ActiveRecord::Base
     else
       user
     end
-  end
-
-  def self.make_new(params, current_user)
-    book = new(params)
-    book.user_id = current_user.id if current_user
-    book.booking_number = Random.rand(1_000_000_000..9_999_999_999).to_s
-    book.amount = book.flight.price * book.passengers.size
-    book.paid = false
-    book
   end
 
   def remaining_seats

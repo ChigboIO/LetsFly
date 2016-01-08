@@ -25,7 +25,6 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
       scenario "with valid email and password" do
         sign_up_with "Emmanuel", "valid@example.com", "password"
 
-        # expect(page).to have_current_path(root_path)
         expect(current_path).to eq(root_path)
         expect(page).to have_content("Emmanuel")
         # expect(page).to have_content("logout")
@@ -58,7 +57,6 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
       end
 
       def sign_up_with(name, email, password)
-        # visit signup_path
         fill_in "user_name", with: name
         fill_in "user_email", with: email
         fill_in "user_password", with: password
@@ -82,8 +80,6 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
     end
 
     context "When filling the signin form" do
-      # let(:user) { create(:user) }
-
       before(:each) do
         visit login_path
       end
@@ -103,17 +99,10 @@ RSpec.describe "Signup and Signin Pages", type: :feature do
         sign_in_with "no_user@example.com", "password"
 
         expect(current_path).to eq(login_path)
-        # expect(page).to have_content("Login form")
         expect(page).to have_content("Incorrect username or password")
-
-        # within(:css, "div.error_messages") do
-        #   expect(page).to have_content('Some error occured')
-        #   expect(page).to have_content('Email is invalid')
-        # end
       end
 
       def sign_in_with(email, password)
-        # visit signup_path
         fill_in "email", with: email
         fill_in "password", with: password
         click_button "Signin"

@@ -4,6 +4,12 @@
     <%= f.hidden_field :flight_id %>
       <div class="col l8" id="passengers">
         <h5>Passengers Details</h5>
+        <% if current_user.nil? %>
+          <p>
+            <strong>As you are not logged in, note the following:</strong><br>
+            1. The book confirmation mail will be sent to the first passenger email you enter here.
+          </p>
+        <% end %>
         <%= f.fields_for :passengers do |p| %>
           <div class="passenger-div">
             <div>
@@ -23,49 +29,12 @@
       </div>
       <div class="col l4">
         <h5>Flight Details</h5>
-        <div class="row">
-          <div class="col l5 bold">Airline</div>
-          <div class="col l7"><%= @flight.airline %></div>
-        </div>
-        <div class="row">
-          <div class="col l5 bold">Flight Number</div>
-          <div class="col l7"><%= @flight.id %></div>
-        </div>
-        <div class="row">
-          <div class="col l5 bold">Origin Airport</div>
-          <div class="col l7">
-            <div>
-              <%= @flight.origin_airport.name + ", " + @flight.origin_airport.state %> state
-            </div>
-            <div>
-              <% d_date = Date.parse(@flight.departure_datetime.to_s) %>
-              <%= d_date.strftime("%A, #{d_date.day.ordinalize} %b %Y") %>
-            </div>
-            <div>
-              <% d_time = Time.parse(@flight.departure_datetime.to_s) %>
-              <%= d_time.strftime("%l:%M %P") %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col l5 bold">Destination Airport</div>
-          <div class="col l7">
-            <div>
-              <%= @flight.destination_airport.name + ", " + @flight.destination_airport.state %> state
-            </div>
-            <div>
-              <% a_date = Date.parse(@flight.arrival_datetime.to_s) %>
-              <%= a_date.strftime("%A, #{a_date.day.ordinalize} %b %Y") %>
-            </div>
-            <div>
-              <% a_time = Time.parse(@flight.arrival_datetime.to_s) %>
-              <%= a_time.strftime("%l:%M %P") %>
-            </div>
-          </div>
-        </div>
+        
+        <%= render "flight_details" %>
+
         <div class="row">
           <div class="col l5 bold">Flight Price</div>
-          <div class="col l7">NGN <%= @flight.price %> / passenger</div>
+          <div class="col l7">NGN <%= @booking.flight.price %> / passenger</div>
         </div>
         <div class="row">
           <div class="col l5 bold"></div>

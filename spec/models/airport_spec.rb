@@ -11,12 +11,11 @@ RSpec.describe Airport, type: :model do
     context "respond to instance method calls" do
       it { expect(airport).to respond_to(:name) }
       it { expect(airport).to respond_to(:state) }
-      it { expect(airport).to respond_to(:name_with_state) }
     end
 
     context "#name_with_state" do
       it "combines airport name and state" do
-        expect(airport.name_with_state).to eq("JJC Airport, Lagos")
+        expect(airport.decorate.name_with_state).to eq("JJC Airport, Lagos")
       end
     end
   end
