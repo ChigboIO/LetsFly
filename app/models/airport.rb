@@ -4,7 +4,7 @@ class Airport < ActiveRecord::Base
   validates :name, presence: true
   validates :state, presence: true
 
-  def name_with_state
-    name + ", " + state
+  def decorate
+    @decorate ||= AirportDecorator.new(self)
   end
 end

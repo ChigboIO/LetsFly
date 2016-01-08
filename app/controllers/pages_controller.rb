@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
   def index
-    @flight = Flight.new
-    @flights = Flight.order("RANDOM()").limit(10)
-    @seats = 1
-    @airports = Airport.all
+    @presenter = Flights::IndexPresenter.new(
+      Flight.not_departed.order("departure_datetime").limit(10)
+    )
   end
 end

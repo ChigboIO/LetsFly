@@ -8,26 +8,22 @@
       <div class="col l5">
         <h5>FROM</h5>
         <div>
-          <%= @booking.flight.origin_airport.name + ", " + @booking.flight.origin_airport.state %> state
+          <%= @booking.flight.origin_airport.decorate.name_with_state %> state
         </div>
         <div>
-          <% d_date = Date.parse(@booking.flight.departure_datetime.to_s) %>
-          <%= d_date.strftime("%A, #{d_date.day.ordinalize} %b %Y") %>
-          <% d_time = Time.parse(@booking.flight.departure_datetime.to_s) %>
-          <%= d_time.strftime("%l:%M %P") %>
+          <%= @booking.flight.decorate.departure_d %>
+          <%= @booking.flight.decorate.departure_t %>
         </div>
       </div>
       <div class="col l2"> >>> </div>
       <div class="col l5">
         <h5>TO</h5>
         <div>
-          <%= @booking.flight.destination_airport.name + ", " + @booking.flight.destination_airport.state %> state
+          <%= @booking.flight.destination_airport.decorate.name_with_state %> state
         </div>
         <div>
-          <% d_date = Date.parse(@booking.flight.arrival_datetime.to_s) %>
-          <%= d_date.strftime("%A, #{d_date.day.ordinalize} %b %Y") %>
-          <% d_time = Time.parse(@booking.flight.arrival_datetime.to_s) %>
-          <%= d_time.strftime("%l:%M %P") %>
+          <%= @booking.flight.decorate.arrival_d %>
+          <%= @booking.flight.decorate.arrival_t %>
         </div>
       </div>
     </div>

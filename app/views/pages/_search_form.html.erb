@@ -1,19 +1,15 @@
 <div class="row">
-  <%= form_for @flight, url: search_flights_path, remote: true, method: :get do |f|%>
+  <%= form_for @presenter.flight, url: search_flights_path, remote: true, method: :get do |f|%>
     <div class="col l4">
-      <!-- <div class="home-input-label">From</div> -->
-      <%= f.select :origin_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Origin Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
+      <%= f.select :origin_airport_id, list_airports, { prompt: "Select Origin Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
     </div>
     <div class="col l4">
-      <!-- <div>To</div> -->
-      <%= f.select :destination_airport_id, Airport.all.collect {|a| [ a.name_with_state, a.id ] }, { prompt: "Select Destination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
+      <%= f.select :destination_airport_id, list_airports, { prompt: "Select Destination Airport", include_blank: "All"}, { required: "required", class: "home-input browser-default" } %>
     </div>
     <div class="col l2">
-      <!-- <div class="home-input-label">Travel Date</div> -->
       <%= f.date_field :departure_datetime, { class: "datepicker home-input", placeholder: "Travel Date" } %>
     </div>
     <div class="col l1">
-      <!-- <div class="home-input-label">Travelers</div> -->
       <%= f.number_field :available_seats, { value: 1, placeholder: "Number of Travelers", class: "home-input", required: "required", min: 1 } %>
     </div>
     <div class="col l1">

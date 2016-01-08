@@ -1,14 +1,15 @@
 class FlightsController < ApplicationController
   def index
-    @flight = Flight.new
-    @flights = Flight.paginate(page: params[:page], per_page: 30)
-    @seats = 1
-    @airports = Airport.all
+    @presenter = Flights::IndexPresenter.new(
+      Flight.not_departed.paginate(page: params[:page], per_page: 30)
+    )
   end
 
   def search
-    @flights = Flight.get_match(flight_params)
-    @seats = flight_params[:available_seats]
+    @presenter = Flights::IndexPresenter.new(
+      Flight.not_departed.get_match(flight_params)
+    )
+    @presenter.seats = flight_params[:available_seats]
     respond_to do |format|
       format.html
       format.js

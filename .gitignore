@@ -18,3 +18,4 @@
 /.idea
 rubocop-check.html
 .byebug_history
+/coverage

@@ -1,1 +1,26 @@
-Some mail content here
+Hello <%= @user.name %>,
+So you have decided to fly this time? GOOD!
+
+Below is your flight information.
+
+<%= @booking.flight.airline %>
+
+Flight NO: <%= @booking.flight.id %>
+
+FROM
+<%= @booking.flight.origin_airport.decorate.name_with_state %> state
+<%= @booking.flight.decorate.departure_d %>
+<%= @booking.flight.decorate.departure_t %>
+
+TO
+<%= @booking.flight.destination_airport.decorate.name_with_state %> state
+<%= @booking.flight.decorate.arrival_d %>
+<%= @booking.flight.decorate.arrival_t %>
+
+------------------------------------------------------->Booking Number: <%= @booking.booking_number %>
+
+Passengers
+
+<% @booking.passengers.each_with_index do |p, index| %>
+  <%= (index + 1).to_s + "> " + p.name + ", " + p.email + ", " + p.phone %>
+<% end %>
